@@ -1,72 +1,91 @@
-<img width="891" height="489" alt="image" src="https://github.com/user-attachments/assets/c05482b6-67ec-40b2-a6c7-a4482d176eb2" />
+## 🛠️ Step-by-Step Setup: AWS-Based Receipt Automation Pipeline
 
-
-## 📄 Automating Receipt Processing using AWS Services
-
-Managing receipts manually is often time-consuming, error-prone, and difficult to scale. This project focuses on automating receipt processing using **AWS cloud-native services** to extract, store, and notify users with minimal manual intervention.
-
-Instead of manually handling receipts, this system extracts **structured data** from receipt images and PDFs, then stores it efficiently for **record-keeping and auditing**.
+This walkthrough will help you build a serverless receipt processing system using AWS tools from start to finish.
 
 ---
 
-## 🧠 Why This Project?
+## Set Up Amazon S3 Bucket (for receipt uploads)
 
-Whether you're handling receipts for a business, college finance department, or event reimbursements, automating the flow of receipt data improves:
+### ✅ Instructions:
 
-- Accuracy
-- Speed
-- Scalability
-- Real-time notifications
+1.	Go to S3 Console → Click "Create Bucket"
+2.	Give it a name (e.g., scanvault-storage-ankit1609)
+3.	Choose your region (e.g., ap-south-1)
+4.	Click "Create bucket"
+5.	Inside the bucket, create a folder (e.g., scanvault-incoming/) for organized uploads
 
----
+## Configure DynamoDB Table (for storing extracted data)
 
-## 🏗️ Architecture Overview
+### ✅ Instructions:
 
-The project is broken down into modular layers, each powered by a specific AWS service:
+1.	Navigate to DynamoDB Console → Click "Create Table"
+2.	Table Name: ScanVault-Receipts-Table
+3.	Set Partition Key as receipt_id (Type: String)
+4.	Set Sort Key as date (Type: String) 
+5.	Click "Create"
 
-### 📦 Storage Layer
-- **Amazon S3**  
-  Stores uploaded receipt images and PDFs securely.
+## Setup Amazon SES (for email alerts)
 
-### 🧾 Processing Layer
-- **Amazon Textract**  
-  Extracts text and structured data using **AI-powered OCR**.
+### ✅ Instructions:
 
-### 🗃️ Database Layer
-- **Amazon DynamoDB**  
-  Stores the extracted data in a scalable NoSQL database.
+1.	Open Amazon SES Console
+2.	Under Verified Identities, verify your sender email
+3.	If your account is in sandbox mode, also verify recipient email
+4.	Note the selected region (e.g., ap-south-1) for Lambda usage
 
-### 📧 Notification Layer
-- **Amazon SES (Simple Email Service)**  
-  Sends email alerts with receipt details to users or admins.
+## Create IAM Role for Lambda (permissions handler)
 
-### ⚙️ Compute Layer
-- **AWS Lambda**  
-  Automates the receipt processing workflow on new uploads (serverless).
+### ✅ Instructions:
 
----
+1.	Go to IAM Console → Click Roles → Create Role
+2.	Choose Lambda as the use case
+3.	Attach the following policies:
+    *	AmazonS3ReadOnlyAccess
+    *	AmazonTextractFullAccess
+    *	AmazonDynamoDBFullAccess
+    *	AmazonSESFullAccess
+    *	AWSLambdaBasicExecutionRole
+4.	Name the role: ScanVault-lambdrole
 
-## 🛠 Services Used
+## Deploy the Lambda Function (core processor)
 
-| Service           | Purpose                                                  | Category   |
-|-------------------|----------------------------------------------------------|------------|
-| **Amazon S3**      | Stores uploaded receipt images and PDFs                 | `Storage`  |
-| **Amazon Textract**| Extracts text and data from scanned receipts             | `AI/ML`    |
-| **Amazon DynamoDB**| Saves structured receipt data                            | `Database` |
-| **Amazon SES**     | Sends email notifications with receipt summaries         | `Messaging`|
-| **AWS Lambda**     | Handles the logic to connect all services seamlessly     | `Compute`  |
-| **IAM Roles**      | Secure permissions between AWS services                 | `Security` |
+### ✅ Instructions:
 
----
+1.	Visit AWS Lambda Console → Click "Create Function"
+2.	Function Name: processingLambda
+3.	Runtime: Choose Python 3.9 or Node.js
+4.	Use existing role → Select ScanVault-lambdrole
+5.	In Configuration → Environment variables, add required key-values
+6.	Go to Code section → Paste the code from your python.py → Click Deploy
+7.	In Configuration → General settings, click Edit
+8.	Increase the timeout to 2 minutes (default is too low for large files)
 
-## 🔍 Real-Time Use Cases
+## Set Up S3 Trigger for Lambda
 
-- **Exam Date or Event Announcement System**
-- **Subscription Expiry Alert System**
-- **Seminar/Workshop Attendance Proof Distribution**
-- **College Fee Receipt Automation**
-- **Campus Placement Interview Call Letters**
-- **Vendor Invoice Tracking in Colleges**
-- **Training Completion Record Automation**
+### ✅ Instructions:
 
----
+1.	Open the S3 Bucket
+2.	Go to the Properties tab
+3.	Scroll to Event Notifications → Click "Create event notification"
+4.	Prefix: incoming/
+5.	Event type: All object create events
+
+## Upload a Sample Receipt (to test the pipeline)
+
+### ✅ Instructions:
+
+1.	Open the S3 Bucket you created
+2.	Navigate into the scanvault-incoming/ folder
+3.	Click "Upload"
+4.	Select a sample receipt image or PDF
+5.	Click "Upload"
+6.	The Lambda function will automatically process it, extract the data using Textract, store it in DynamoDB, and send an email via SES
+
+## Repeat step number 3 again to verify the another mail account aswell
+
+✍️ **Author**: *Ankit Chowdhary*  
+📬 *Feel free to connect on [LinkedIn](https://www.linkedin.com/in/ankit-chowdhary-1609ac/)*  
+
+
+
+
