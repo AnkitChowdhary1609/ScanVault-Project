@@ -11,7 +11,7 @@ store, and notify users---without human effort.
 automatically---turning receipt images or PDFs into structured, stored,
 and shared data.
 
-**💡 Why Automate Receipts?**
+## **💡 Why Automate Receipts?**
 
 Perfect for businesses, colleges, and events. Benefits:
 
