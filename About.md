@@ -1,7 +1,7 @@
 <img width="933" height="521" alt="Screenshot 2025-07-18 at 4 45 03 PM" src="https://github.com/user-attachments/assets/c96fedc0-a4a5-4fba-ba91-2e63331f1e5d" />
 
 
-##📸 AWS-Powered Receipt Automation System
+## 📸 AWS-Powered Receipt Automation System
 
 Manual receipt handling is slow, error-prone, and hard to scale. This
 project automates receipt processing using AWS services to extract,
