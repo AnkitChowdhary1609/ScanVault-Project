@@ -14,6 +14,18 @@ This walkthrough will help you build a serverless receipt processing system usin
 4.	Click "Create bucket"
 5.	Inside the bucket, create a folder (e.g., scanvault-incoming/) for organized uploads
 
+<img width="1470" height="956" alt="Screenshot 2025-07-18 at 4 04 55 PM" src="https://github.com/user-attachments/assets/e9fbb5ae-435c-4c41-bcc2-6038eb20a0d1" />
+
+<img width="1470" height="956" alt="Screenshot 2025-07-18 at 4 06 47 PM" src="https://github.com/user-attachments/assets/e44a4832-eda0-426a-9f70-354dde7871d0" />
+
+<img width="1470" height="956" alt="Screenshot 2025-07-18 at 4 05 46 PM" src="https://github.com/user-attachments/assets/f675c309-a99e-4729-8c64-bbe75b51537b" />
+
+<img width="1470" height="956" alt="Screenshot 2025-07-18 at 4 07 22 PM" src="https://github.com/user-attachments/assets/2db7365a-3baa-4bec-8d1f-814cfb521dc0" />
+
+<img width="1470" height="956" alt="Screenshot 2025-07-18 at 4 08 35 PM" src="https://github.com/user-attachments/assets/ed45f1b8-d438-45d4-ae9d-39003a077381" />
+
+<img width="1470" height="956" alt="Screenshot 2025-07-18 at 4 08 59 PM" src="https://github.com/user-attachments/assets/80035b91-38f1-41d8-94d1-4f7141c64458" />
+
 ## Configure DynamoDB Table (for storing extracted data)
 
 ### ✅ Instructions:
