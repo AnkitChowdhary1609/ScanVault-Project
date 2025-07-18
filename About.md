@@ -1,15 +1,13 @@
 <img width="933" height="521" alt="Screenshot 2025-07-18 at 4 45 03 PM" src="https://github.com/user-attachments/assets/c96fedc0-a4a5-4fba-ba91-2e63331f1e5d" />
 
 
-## 📸 AWS-Powered Receipt Automation System
+## **📸 AWS-Powered Receipt Automation System**
 
 Manual receipt handling is slow, error-prone, and hard to scale. This
 project automates receipt processing using AWS services to extract,
 store, and notify users---without human effort.
 
-📂 From upload to notification, everything happens
-automatically---turning receipt images or PDFs into structured, stored,
-and shared data.
+📂 From upload to notification, everything happensautomatically---turning receipt images or PDFs into structured, stored, and shared data.
 
 ## **💡 Why Automate Receipts?**
 
@@ -20,36 +18,36 @@ Perfect for businesses, colleges, and events. Benefits:
 ✅ Scalable & secure  
 ✅ Instant notifications
 
-**🏗️ System Architecture**
+## **🏗️ System Architecture**
 
 Each layer uses a specialized AWS service:
 
-**🗂️ Storage**
+### **🗂️ Storage**
 
 **Amazon S3**  
 → Secure upload & storage of receipt files (images/PDFs)
 
-**🔍 Text Extraction**
+### **🔍 Text Extraction**
 
 **Amazon Textract**  
 → AI OCR extracts key fields like date, amount, and vendor
 
-**📊 Data Storage**
+### **📊 Data Storage**
 
 **Amazon DynamoDB**  
 → Saves structured data for fast, scalable access
 
-**✉️ Notifications**
+### **✉️ Notifications**
 
 **Amazon SES**  
 → Sends auto-emails with receipt summaries
 
-**🧠 Automation**
+### **🧠 Automation**
 
 **AWS Lambda**  
 → Serverless function triggers on new uploads to kick off processing
 
-**🛠️ Services Used**
+## **🛠️ Services Used**
 
 | **Service**     | **Role**                         | **Category** |
 |-----------------|----------------------------------|--------------|
@@ -60,7 +58,7 @@ Each layer uses a specialized AWS service:
 | AWS Lambda      | Automate entire process flow     | Compute      |
 | IAM Roles       | Secure service-to-service access | Security     |
 
-**🚀 Real-World Use Cases**
+## **🚀 Real-World Use Cases**
 
 📢 Exam/Event Notification Emails  
 ⏳ Subscription Renewal Reminders  
